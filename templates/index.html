@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王佳宁的圣诞树！</title>
+    <style>
+        /* 礼物盒子的CSS样式 */
+        .gift-box {
+        width: 300px;
+        height: 300px; /* 16:9 aspect ratio */
+        /* 垂直居中 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('../static/礼物.svg'); /* 替换为你的礼盒图片路径 */
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: opacity 0.5s;
+        animation: shake 1s infinite;
+    }
+
+    @keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    10% { transform: translate(-50%, -50%) rotate(1deg); }
+    20% { transform: translate(-50%, -50%) rotate(-1deg); }
+    30% { transform: translate(-50%, -50%) rotate(1deg); }
+    40% { transform: translate(-50%, -50%) rotate(-1deg); }
+    50% { transform: translate(-50%, -50%) rotate(1deg); }
+    60% { transform: translate(-50%, -50%) rotate(-1deg); }
+    70% { transform: translate(-50%, -50%) rotate(1deg); }
+    80% { transform: translate(-50%, -50%) rotate(-1deg); }
+    90% { transform: translate(-50%, -50%) rotate(1deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+        /* 视频的CSS样式 */
+        video {
+            width: 100%;
+            height: auto;
+            display: none; /* 默认不显示视频 */
+        }
+    </style>
+</head>
+<body>
+    <div class="gift-box" onclick="playVideo()"></div>
+    <video id="videoPlayer" controls>
+        <source src="static\for_wjn.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function playVideo() {
+            var giftBox = document.querySelector('.gift-box');
+            if (giftBox) {
+                giftBox.remove();
+            }
+            var video = document.getElementById('videoPlayer');
+            
+            // 使礼盒图片消失
+            giftBox.style.opacity = '0';
+            
+            // 播放视频
+            video.style.display = 'block';
+            video.play();
+        }
+    </script>
+</body>
+</html>
